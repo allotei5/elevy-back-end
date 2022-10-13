@@ -86,7 +86,7 @@ class ChartsController extends Controller
     }
 
     public function avgSentimentsByDay() {
-        $sql = "SELECT AVG(positive) as positive, AVG(neutral) as neutral, AVG(negative) as negative, pubDate FROM posts GROUP BY pubDate";
+        $sql = "SELECT AVG(positive) as positive, AVG(neutral) as neutral, AVG(negative) as negative, WEEK(pubDate) AS pubDate FROM posts GROUP BY pubDate";
 
         $posts = DB::select($sql);
         return response()->json($posts, 200);
